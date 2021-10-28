@@ -1,5 +1,6 @@
 package org.springframework.beans.factory.config;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import sun.dc.pr.PRError;
 
@@ -21,6 +22,10 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
     @Override
     protected BeanDefinition getBeanDefinition(String beanName) {
-        return beanDefinitionMap.get(beanName);
+        BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+        if (beanDefinition == null){
+            throw new BeansException("No bean named "+ beanName + " is defined");
+        }
+        return beanDefinition;
     }
 }
