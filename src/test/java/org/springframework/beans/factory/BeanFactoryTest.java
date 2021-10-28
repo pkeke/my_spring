@@ -1,6 +1,7 @@
 package org.springframework.beans.factory;
 
 import org.junit.Test;
+import org.springframework.beans.Person;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.Propertyvalues;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -24,5 +25,20 @@ public class BeanFactoryTest {
         System.out.println(helloService.toString());
         assertThat(helloService.getFoo()).isEqualTo("hello");
         assertThat(helloService.getBar()).isEqualTo("world");
+    }
+
+    @Test
+    public void testPopulateBeanWithPropertyValues(){
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        Propertyvalues propertyvalues = new Propertyvalues();
+        propertyvalues.addPropertyValue(new PropertyValue("name","pke"));
+        propertyvalues.addPropertyValue(new PropertyValue("age",18));
+        BeanDefinition beanDefinition = new BeanDefinition(Person.class,propertyvalues);
+        beanFactory.registerBeanDefinition("person",beanDefinition);
+        Person person = (Person) beanFactory.getBean("person");
+
+        System.out.println(person.toString());
+        assertThat(person.getAge()).isEqualTo(18);
+        assertThat(person.getName()).isEqualTo("pke");
     }
 }

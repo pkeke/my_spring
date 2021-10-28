@@ -1,5 +1,6 @@
 package org.springframework.beans.factory.support;
 
+import cn.hutool.core.bean.BeanUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -39,15 +40,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
              Class beanClass = beanDefinition.getBeanClass();
              for (PropertyValue propertyVaule : beanDefinition.getPropertyvalues().getPropertyVaules()) {
                  String name = propertyVaule.getName();
-                 String value = propertyVaule.getValue();
+                 Object value = propertyVaule.getValue();
 
-                 // 通过属性的set方法设置属性
-                Class<?> type = beanClass.getDeclaredField(name).getType();
-
-                String methodName = "set"+name.substring(0,1).toUpperCase()+name.substring(1);
-
-                 Method method = beanClass.getDeclaredMethod(methodName,new Class[]{type});
-                 method.invoke(bean,new Object[] {value});
+                 // 通过反射设置属性
+                 BeanUtil.setFieldValue(bean,name,value);
 
              }
          } catch (Exception e) {
