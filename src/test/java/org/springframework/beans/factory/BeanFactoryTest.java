@@ -2,9 +2,7 @@ package org.springframework.beans.factory;
 
 import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.DefaultListableBeanFactory;
-
-import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

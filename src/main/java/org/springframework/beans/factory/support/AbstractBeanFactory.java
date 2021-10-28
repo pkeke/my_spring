@@ -1,8 +1,8 @@
-package org.springframework.beans.factory.config;
+package org.springframework.beans.factory.support;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
+import org.springframework.beans.factory.config.BeanDefinition;
 
 /**
  * @author pke
