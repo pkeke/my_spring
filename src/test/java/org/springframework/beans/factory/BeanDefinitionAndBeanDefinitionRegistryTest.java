@@ -1,15 +1,19 @@
 package org.springframework.beans.factory;
 
 import org.junit.Test;
-import org.springframework.beans.Person;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.Propertyvalues;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.service.HelloService;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BeanFactoryTest {
+/**
+ * @author pke
+ * @data 2021/10/28 20:15
+ */
+public class BeanDefinitionAndBeanDefinitionRegistryTest {
 
     @Test
     public void testBeanFactory(){
@@ -25,20 +29,5 @@ public class BeanFactoryTest {
         System.out.println(helloService.toString());
         assertThat(helloService.getFoo()).isEqualTo("hello");
         assertThat(helloService.getBar()).isEqualTo("world");
-    }
-
-    @Test
-    public void testPopulateBeanWithPropertyValues(){
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        Propertyvalues propertyvalues = new Propertyvalues();
-        propertyvalues.addPropertyValue(new PropertyValue("name","pke"));
-        propertyvalues.addPropertyValue(new PropertyValue("age",18));
-        BeanDefinition beanDefinition = new BeanDefinition(Person.class,propertyvalues);
-        beanFactory.registerBeanDefinition("person",beanDefinition);
-        Person person = (Person) beanFactory.getBean("person");
-
-        System.out.println(person.toString());
-        assertThat(person.getAge()).isEqualTo(18);
-        assertThat(person.getName()).isEqualTo("pke");
     }
 }

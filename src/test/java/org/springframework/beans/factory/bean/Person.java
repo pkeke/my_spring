@@ -1,4 +1,4 @@
-package org.springframework.beans;
+package org.springframework.beans.factory.bean;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
