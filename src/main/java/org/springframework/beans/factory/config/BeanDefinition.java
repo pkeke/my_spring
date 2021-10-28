@@ -1,5 +1,6 @@
 package org.springframework.beans.factory.config;
 
+import org.springframework.beans.Propertyvalues;
 import org.springframework.beans.factory.BeanFactory;
 
 /**
@@ -13,8 +14,16 @@ import org.springframework.beans.factory.BeanFactory;
 public class BeanDefinition {
 
     private Class beanClass;
+
+    private Propertyvalues propertyvalues;
+
     public BeanDefinition(Class beanClass){
         this.beanClass = beanClass;
+    }
+
+    public BeanDefinition(Class beanClass, Propertyvalues propertyvalues) {
+        this.beanClass = beanClass;
+        this.propertyvalues = propertyvalues;
     }
 
     public Class getBeanClass() {
@@ -23,5 +32,13 @@ public class BeanDefinition {
 
     public void setBeanClass(Class beanClass) {
         this.beanClass = beanClass;
+    }
+
+    public Propertyvalues getPropertyvalues() {
+        return propertyvalues;
+    }
+
+    public void setPropertyvalues(Propertyvalues propertyvalues) {
+        this.propertyvalues = propertyvalues;
     }
 }
