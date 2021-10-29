@@ -10,12 +10,21 @@ import java.util.List;
 public class Propertyvalues {
 
     private final List<PropertyValue> propertyValueList = new ArrayList<>();
-    public void addPropertyValue(PropertyValue pv){
-        propertyValueList.add(pv);
-    }
 
     public PropertyValue[] getPropertyVaules(){
         return this.propertyValueList.toArray(new PropertyValue[0]);
+    }
+
+    public void addPropertyValue(PropertyValue pv){
+        for (int i = 0; i < this.propertyValueList.size(); i++){
+            PropertyValue currentPv = this.propertyValueList.get(i);
+            if (currentPv.getName().equals(pv.getName())){
+                // 覆盖原有的属性值
+                this.propertyValueList.set(i,pv);
+                return;
+            }
+        }
+        this.propertyValueList.add(pv);
     }
 
     public PropertyValue getPropertyVaule(String propertyName){
