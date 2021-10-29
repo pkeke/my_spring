@@ -1,11 +1,11 @@
-package org.springframework.beans.factory;
+package org.springframework.test.ioc;
 
 import org.junit.Test;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.Propertyvalues;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.service.HelloService;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.test.ioc.service.HelloService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,6 +1,4 @@
-package org.springframework.beans.factory.service;
-
-import java.security.PrivateKey;
+package org.springframework.test.ioc.service;
 
 /**
  * @author pke

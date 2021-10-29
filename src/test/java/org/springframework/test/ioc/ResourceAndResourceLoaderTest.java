@@ -1,4 +1,4 @@
-package org.springframework.beans.factory;
+package org.springframework.test.ioc;
 
 import cn.hutool.core.io.IoUtil;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class ResourceAndResourceLoaderTest {
 
         // 加载文件系统资源
 
-        resource = resourceLoader.getResource("Dsrc/test/resources/hello.txt");
+        resource = resourceLoader.getResource("src\\test\\resources\\hello.text");
         assertThat(resource instanceof FileSystemResource).isTrue();
         inputStream = resource.getInputStream();
         content = IoUtil.readUtf8(inputStream);

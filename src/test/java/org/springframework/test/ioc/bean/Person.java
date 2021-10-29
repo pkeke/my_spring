@@ -1,6 +1,4 @@
-package org.springframework.beans.factory.bean;
-
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+package org.springframework.test.ioc.bean;
 
 /**
  * @author pke
@@ -9,7 +7,19 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 public class Person {
 
     private String name;
+
+
     private int age;
+
+    private Car car;
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
     public String getName() {
         return name;
@@ -32,6 +42,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", car=" + car +
                 '}';
     }
 

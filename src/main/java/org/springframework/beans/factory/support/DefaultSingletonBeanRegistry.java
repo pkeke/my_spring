@@ -2,7 +2,6 @@ package org.springframework.beans.factory.support;
 
 import org.springframework.beans.factory.config.SingletonBeanRegistory;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 

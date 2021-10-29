@@ -1,15 +1,13 @@
-package org.springframework.beans.factory;
+package org.springframework.test.ioc;
 
 import org.junit.Test;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.Propertyvalues;
-import org.springframework.beans.factory.bean.Car;
-import org.springframework.beans.factory.bean.Person;
+import org.springframework.test.ioc.bean.Person;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanReference;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-
-import java.util.Base64;
+import org.springframework.test.ioc.bean.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
