@@ -23,6 +23,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 创建BeanFactory, 并加载BeanDefinition
         refreshBeanFactory();
         ConfigurableListableBeanFactory beanFactory  = getBeanFactory();
+
+        beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
         
         // 在bean实例化之前，执行BeanFactoryPostProcessor
         invokeBeanFactoryPostProcessors(beanFactory);
@@ -62,6 +64,23 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanFactoryPostProcessorMap.values()) {
             beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
         }
+    }
+
+    public void close(){
+        doClose();
+    }
+
+    public void registerShutdownHook(){
+        Thread shutdownHook = new Thread(this::doClose);
+        Runtime.getRuntime().addShutdownHook(shutdownHook);
+    }
+
+    private void doClose() {
+        destroyBeans();
+    }
+
+    private void destroyBeans() {
+        getBeanFactory().destroySingletons();
     }
 
 

@@ -16,6 +16,10 @@ public class BeanDefinition {
 
     private Propertyvalues propertyvalues;
 
+    private String initMethodName;
+
+    private String destoryMethodName;
+
     public BeanDefinition(Class beanClass){
         this(beanClass,null);
     }
@@ -39,5 +43,21 @@ public class BeanDefinition {
 
     public void setPropertyvalues(Propertyvalues propertyvalues) {
         this.propertyvalues = propertyvalues;
+    }
+
+    public String getInitMethodName() {
+        return initMethodName;
+    }
+
+    public void setInitMethodName(String initMethodName) {
+        this.initMethodName = initMethodName;
+    }
+
+    public String getDestoryMethodName() {
+        return destoryMethodName;
+    }
+
+    public void setDestoryMethodName(String destoryMethodName) {
+        this.destoryMethodName = destoryMethodName;
     }
 }

@@ -2,10 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="person" class="org.springframework.test.ioc.bean.Person">
-        <property name="name" value="pke"/>
-        <property name="age" value="18"/>
+    <bean id="person" class="org.springframework.test.ioc.bean.Person" init-method="customInitMethod" destroy-method="customDestroyMethod">
+        <property name="name" value="derek"/>
         <property name="car" ref="car"/>
     </bean>
 
@@ -13,7 +11,5 @@
         <property name="brand" value="porsche"/>
     </bean>
 
-    <bean class="org.springframework.test.ioc.common.CustomBeanFactoryPostcessor"></bean>
-    <bean class="org.springframework.test.ioc.common.CustomBeanPostProcessor"></bean>
-    <bean id="helloService" class="org.springframework.test.ioc.service.HelloService"></bean>
+
 </beans>
