@@ -12,6 +12,9 @@ import org.springframework.beans.Propertyvalues;
  */
 public class BeanDefinition {
 
+    public static String SCOPE_SINGLETON = "singleton";
+    public static String SCOPE_PROTOTYPE = "prototype";
+
     private Class beanClass;
 
     private Propertyvalues propertyvalues;
@@ -19,6 +22,12 @@ public class BeanDefinition {
     private String initMethodName;
 
     private String destoryMethodName;
+
+    private String scope = SCOPE_SINGLETON;
+
+    private boolean singleton = true;
+
+    private boolean prototype = false;
 
     public BeanDefinition(Class beanClass){
         this(beanClass,null);
@@ -47,6 +56,24 @@ public class BeanDefinition {
 
     public String getInitMethodName() {
         return initMethodName;
+    }
+
+    public boolean isSingleton(){
+        return this.singleton;
+    }
+
+    public boolean isPrototype(){
+        return this.prototype;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+        this.prototype = SCOPE_PROTOTYPE.equals(scope);
+        this.singleton = SCOPE_SINGLETON.equals(scope);
     }
 
     public void setInitMethodName(String initMethodName) {
